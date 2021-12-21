@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-di2+#k8wj6o=5d7e8ail^vlwx#a$=$0+rwax9qter)sawo%@_r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['blog553.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','blog553.herokuapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'home.apps.HomeConfig',
     'blog1.apps.Blog1Config',
     'video.apps.VideoConfig',
@@ -42,12 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'embed_video',
-    'whitenoise',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleWare',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -86,6 +86,7 @@ WSGI_APPLICATION = 'newblog.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+import dj_database_url
 DATABASES={
     'default':{
         'ENGINE': 'django.db.backends.postgresql',
@@ -95,7 +96,8 @@ DATABASES={
         'HOST':'ec2-54-209-165-105.compute-1.amazonaws.com',
     }
 }
-
+db_from_env=dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -140,6 +142,8 @@ STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
+WHITENOISE_USE_FINDERS=True
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
