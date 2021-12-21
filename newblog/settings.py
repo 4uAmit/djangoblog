@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'newblog.wsgi.application'
 DATABASES={
     'default':{
         'ENGINE': 'django.db.backends.postgresql',
-        'USER':'ldcpzgqjfaenps',
-        'NAME':'d3sjh1rppc8f15',
-        'PASSWORD':'e75b8fd5d51c8717c20946c1c61abbbefabafef491a3c9c56ba05abb9bdff94f',
-        'HOST':'ec2-100-24-169-249.compute-1.amazonaws.com',
+        'USER':'urqrlwimvdtgib',
+        'NAME':'d300cisctnphbd',
+        'PASSWORD':'98ae1d94dafae259474476021ba778ab3dc5e312c2c6464af30366ce61dd843f',
+        'HOST':'ec2-54-209-165-105.compute-1.amazonaws.com',
     }
 }
 
