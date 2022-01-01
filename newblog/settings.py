@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-di2+#k8wj6o=5d7e8ail^vlwx#a$=$0+rwax9qter)sawo%@_r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','blog553.herokuapp.com']
 
@@ -143,7 +143,7 @@ MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 WHITENOISE_USE_FINDERS=True
-STATICFILES_STORAGE='whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
